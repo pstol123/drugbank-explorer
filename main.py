@@ -54,4 +54,6 @@ for lek in data:
 
 @api.post("/tests/")
 async def zwroc(id):
+    if(wynik.loc[wynik['ID'] == id].empty):
+        return {"message": "Podano złe id."}
     return {"message": str(wynik.loc[wynik['ID'] == id, 'Liczba'].values[0])}
